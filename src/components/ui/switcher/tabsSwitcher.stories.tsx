@@ -1,9 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 462fa235205a50b54552c37d6f8aac544884d1ad
 import { TabsSwitcher } from './tabsSwitcher.tsx'
 
 const meta = {

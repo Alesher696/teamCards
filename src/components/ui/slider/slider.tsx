@@ -3,15 +3,16 @@ import * as Slider from '@radix-ui/react-slider'
 import s from './slider.module.scss'
 
 type SliderProps = {
-  onChange: (value: number | number[]) => void
+  onChange: (values: number[]) => void
   disable?: boolean
   min: number
   max: number
   step?: number
+  values: number[]
 }
 
 export const SliderCustom = (props: SliderProps) => {
-  const { onChange, min, max, step, disable } = props
+  const { onChange, min, max, step = 1, disable, values } = props
 
   const onVolumeChangeHandler = (values: number[]) => {
     onChange(values)
@@ -26,7 +27,7 @@ export const SliderCustom = (props: SliderProps) => {
         gap: '12px',
       }}
     >
-      <div className={s.boxValue}>{min}</div>
+      <div className={s.boxValue}>{values[0]}</div>
       <Slider.Root
         className={s.SliderRoot}
         defaultValue={[min, max]}
@@ -41,7 +42,7 @@ export const SliderCustom = (props: SliderProps) => {
         <Slider.Thumb className={s.SliderThumb} />
         <Slider.Thumb className={s.SliderThumb} />
       </Slider.Root>
-      <div className={s.boxValue}>{max}</div>
+      <div className={s.boxValue}>{values[1]}</div>
     </form>
   )
 }
