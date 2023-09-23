@@ -18,40 +18,26 @@ type Story = StoryObj<typeof meta>
 
 export const TwoButton: Story = {
   args: {
-    tabs: [
-      { tabsName: 'one', tabsChildren: <Card>content one</Card> },
-      { tabsName: 'two', tabsChildren: <Card>content two</Card> },
-    ],
+    tabs: ['one', 'two'],
   },
 }
 
 export const TwoButtonDisabled: Story = {
   args: {
-    tabs: [
-      { tabsName: 'one', tabsChildren: <Card>content one</Card> },
-      { tabsName: 'two', tabsChildren: <Card>content two</Card> },
-    ],
+    tabs: ['one', 'two'],
     disabled: true,
   },
 }
 
 export const ThreeButton: Story = {
   args: {
-    tabs: [
-      { tabsName: 'one', tabsChildren: <Card>content one</Card> },
-      { tabsName: 'two', tabsChildren: <Card>content two</Card> },
-      { tabsName: 'three', tabsChildren: <Card>content three</Card> },
-    ],
+    tabs: ['one', 'two', 'three'],
   },
 }
 
 export const ThreeButtonDisabled: Story = {
   args: {
-    tabs: [
-      { tabsName: 'one', tabsChildren: <Card>content one</Card> },
-      { tabsName: 'two', tabsChildren: <Card>content two</Card> },
-      { tabsName: 'three', tabsChildren: <Card>content three</Card> },
-    ],
+    tabs: ['one', 'two', 'three'],
     disabled: true,
   },
 }
