@@ -6,32 +6,37 @@ export type PaginationProps = {
   totalCount: number
   currentPage: number
   pageSize: number
-  onPageChange: (page: number | string) => void
-  siblingCount?: number
+  onPageSizeChange: (value: number) => void
+  onCurrentPageChange: (page: number | string) => void
+  siblingCount?: number | string
 }
 
-export const Pagination = (props: PaginationProps) => {
-  const { totalCount, currentPage, pageSize, siblingCount = 1, onPageChange } = props
-
+export const Pagination: React.FC<PaginationProps> = ({
+  totalCount,
+  currentPage,
+  pageSize,
+  siblingCount = 1,
+  onPageSizeChange,
+  onCurrentPageChange,
+}) => {
   const pagesCount = Math.ceil(totalCount / pageSize)
 
   const onNext = () => {
-    onPageChange(currentPage + 1)
+    onCurrentPageChange(currentPage + 1)
   }
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1)
+    onCurrentPageChange(currentPage - 1)
   }
 
   const renderPageNumbers = (): (number | string)[] => {
     const pageNumbers: (number | string)[] = []
 
-    if (pagesCount <= 1) {
-      return pageNumbers
-    }
+    // if (pagesCount <= 1) {
+    // }
 
-    const leftSiblingCount = Math.min(siblingCount, currentPage - 1)
-    const rightSiblingCount = Math.min(siblingCount, pagesCount - currentPage)
+    const leftSiblingCount = Math.min(+siblingCount, currentPage - 1)
+    const rightSiblingCount = Math.min(+siblingCount, pagesCount - currentPage)
 
     const rangeStart = currentPage - leftSiblingCount
     const rangeEnd =
@@ -66,7 +71,7 @@ export const Pagination = (props: PaginationProps) => {
   }
 
   const onPageSizeHandler = (value: string) => {
-    console.log(value)
+    onPageSizeChange(+value)
   }
 
   return (
@@ -79,7 +84,7 @@ export const Pagination = (props: PaginationProps) => {
           <button
             key={i}
             className={`${currentPage === el ? p.activePageStyle : ''} ${p.pageStyle}`}
-            onClick={() => onPageChange(el)}
+            onClick={() => onCurrentPageChange(el)}
             disabled={el === '...'}
           >
             {el}
@@ -93,10 +98,10 @@ export const Pagination = (props: PaginationProps) => {
         Показать{' '}
         <SelectCustom
           options={['10', '20', '30', '40', '50']}
-          defaultValue={'10'}
+          defaultValue={pageSize.toString()}
           onValueChange={onPageSizeHandler}
         />{' '}
-        на на странице
+        на странице
       </div>
     </div>
   )

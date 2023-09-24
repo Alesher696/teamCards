@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Icon } from '../../../styles/assets/icons/icon'
+import EyeOn from '../../../assets/icons/EyeOn'
 
 import { Button } from './button'
 
@@ -70,7 +70,7 @@ export const ButtonWithIcons = {
 
     return (
       <Button variant={'primary'} onClick={onClickHandler}>
-        <Icon />
+        <EyeOn />
         LogOut
       </Button>
     )
