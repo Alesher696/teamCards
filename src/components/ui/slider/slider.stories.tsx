@@ -15,7 +15,8 @@ export default meta
 
 export const Default = {
   render: () => {
-    const values = { min: 0, max: 15 }
+    const min = 0
+    const max = 15
     const [val, setValues] = useState({ min: 0, max: 15 })
     const onChangeHandler = (values: number[]) => {
       setValues({ min: values[0], max: values[1] })
@@ -23,11 +24,12 @@ export const Default = {
 
     return (
       <SliderCustom
-        min={values.min}
-        max={values.max}
-        onChange={onChangeHandler}
-        values={[val.min, val.max]}
-      ></SliderCustom>
+        min={min}
+        max={max}
+        onValueChange={onChangeHandler}
+        value={[val.min, val.max]}
+        defaultValue={[min, max]}
+      />
     )
   },
 }
