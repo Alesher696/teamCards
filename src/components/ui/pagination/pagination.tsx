@@ -23,8 +23,6 @@ export const Pagination = (props: PaginationProps) => {
     onPageChange(currentPage - 1)
   }
 
-
-
   const renderPageNumbers = (): (number | string)[] => {
     const pageNumbers: (number | string)[] = []
 
@@ -64,15 +62,12 @@ export const Pagination = (props: PaginationProps) => {
     //   pageNumbers.splice(2,0,(pageNumbers[2]-1))
     // }
 
-
-
     return pageNumbers
   }
 
-  const onPageSizeHandler = (value:string)=>{
+  const onPageSizeHandler = (value: string) => {
     console.log(value)
   }
-
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -95,8 +90,13 @@ export const Pagination = (props: PaginationProps) => {
         </button>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        Показать <SelectCustom  options={['10', '20', '30', '40', '50']} defaultValue={'10'} onValueChange={onPageSizeHandler} /> на
-        на странице
+        Показать{' '}
+        <SelectCustom
+          options={['10', '20', '30', '40', '50']}
+          defaultValue={'10'}
+          onValueChange={onPageSizeHandler}
+        />{' '}
+        на на странице
       </div>
     </div>
   )
